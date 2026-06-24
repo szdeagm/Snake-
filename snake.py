@@ -47,26 +47,41 @@ while rodando:
     for i in range(len(cobra.cobra) - 1):
         cobra.cobra[i] = cobra.cobra[i + 1]
 
+    
+    tela.fill((0,0,0))
+
     if cobra.direction == "UP":
         cobra.cobra[-1][1] -= 10
+        for cobra_pos in cobra.cobra:
+            tela.blit(cobra.skin, cobra_pos)
+            tela.blit(cobra.rayquaza_cima, (cobra_pos[0]-48, cobra_pos[1]-5))
     if cobra.direction == "DOWN":
         cobra.cobra[-1][1] += 10
+        for cobra_pos in cobra.cobra:
+            tela.blit(cobra.skin, cobra_pos)
+            tela.blit(cobra.rayquaza, (cobra_pos[0]-37, cobra_pos[1]-73))
     if cobra.direction == "LEFT":
         cobra.cobra[-1][0] -= 10
+        for cobra_pos in cobra.cobra:
+            tela.blit(cobra.skin, cobra_pos)
+            tela.blit(cobra.rayquaza_esquerda, (cobra_pos[0]-6, cobra_pos[1]-82))
     if cobra.direction == "RIGHT":
         cobra.cobra[-1][0] += 10
+        for cobra_pos in cobra.cobra:
+            tela.blit(cobra.skin, cobra_pos)
+            tela.blit(cobra.rayquaza_direita, (cobra_pos[0]-120, cobra_pos[1]-78))
+    if cobra.direction == "Right":
+        for cobra_pos in cobra.cobra:
+            tela.blit(cobra.skin, cobra_pos)
+            tela.blit(cobra.rayquaza_parado, (cobra_pos[0]-50, cobra_pos[1]-50))
 
-    tela.fill((0,0,0))
-    for cobra_pos in cobra.cobra:
-        tela.blit(cobra.skin, cobra_pos)
-        tela.blit(cobra.rayquaza, (cobra_pos[0]-50, cobra_pos[1]-70))
-    
     if cobra.cobra[-1] == fruta.fruta:
         placar = placar + 1 
         fruta.reposicionar()
 
 
     tela.blit(fruta.fskin, fruta.fruta)
+    tela.blit(fruta.frutafoto, (fruta.fruta[0] - 7, fruta.fruta[1] - 12))
     texto = fonte.render(f'Placar: {placar}', True, (255, 255, 255))
     tela.blit(texto, (20, 20))
     display.update()
