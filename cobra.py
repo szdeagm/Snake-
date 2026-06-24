@@ -1,5 +1,7 @@
 from pygame import *
 from pygame.locals import *
+from pygame import font
+import random 
 
 class Cobra():
     def __init__(self):
@@ -12,9 +14,14 @@ class Cobra():
 
 class Fruta():
     def __init__(self):
-        self.fruta = [100 , 100]
+        x = random.randint(4,54)*10
+        y = random.randint(4,54)*10
+        self.fruta = [x, y] 
         self.fskin = Surface((10,10))
         self.fskin.fill((250,0,0))
         self.fruta_spaw = True
 
-class Placar():
+    def reposicionar(self):
+        x = random.randint(4,54)*10
+        y = random.randint(4,54)*10
+        self.fruta = [x, y] 

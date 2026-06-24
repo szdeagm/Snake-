@@ -1,8 +1,8 @@
 from pygame import *
 from pygame.locals import *
 from cobra import *
-from pygame import time
-from random import *
+from pygame import time, font
+import random
 
 init()
 
@@ -12,6 +12,9 @@ display.set_caption("Snake")
 fps = time.Clock()
 rodando = True
 fruta = Fruta()
+placar = 0
+fonte = font.SysFont('Courrier', 33)
+
 
 while rodando: 
     fps.tick(10)
@@ -53,8 +56,13 @@ while rodando:
     for cobra_pos in cobra.cobra:
         tela.blit(cobra.skin, cobra_pos)
     
-    tela.blit(fruta.fskin, fruta.fruta)
+    if cobra.cobra[-1] == fruta.fruta:
+        placar = placar + 1 
+        fruta.reposicionar()
 
+    tela.blit(fruta.fskin, fruta.fruta)
+    texto = fonte.render(f'Placar: {placar}', True, (255, 255, 255))
+    tela.blit(texto, (20, 20))
     display.update()
 
 quit()
