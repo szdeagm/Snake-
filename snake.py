@@ -15,9 +15,13 @@ fruta = Fruta()
 placar = 0
 fonte = font.SysFont('Courrier', 33)
 
-
 while rodando: 
-    fps.tick(10)
+    if placar < 10:
+        fps.tick(10)
+    if placar >= 10 <= 20:
+        fps.tick(20) 
+    if placar > 20:
+        fps.tick(25)
     for eventos in event.get():
         if eventos.type == QUIT:
             rodando = False
@@ -55,10 +59,12 @@ while rodando:
     tela.fill((0,0,0))
     for cobra_pos in cobra.cobra:
         tela.blit(cobra.skin, cobra_pos)
+        tela.blit(cobra.rayquaza, (cobra_pos[0]-50, cobra_pos[1]-70))
     
     if cobra.cobra[-1] == fruta.fruta:
         placar = placar + 1 
         fruta.reposicionar()
+
 
     tela.blit(fruta.fskin, fruta.fruta)
     texto = fonte.render(f'Placar: {placar}', True, (255, 255, 255))
