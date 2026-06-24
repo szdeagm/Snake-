@@ -7,11 +7,11 @@ from random import *
 init()
 
 cobra = Cobra()
-fruta = Fruta()
 tela = display.set_mode((600,600))
 display.set_caption("Snake")
 fps = time.Clock()
 rodando = True
+fruta = Fruta()
 
 while rodando: 
     fps.tick(10)
@@ -53,6 +53,8 @@ while rodando:
     for cobra_pos in cobra.cobra:
         tela.blit(cobra.skin, cobra_pos)
     
+    tela.blit(fruta.fskin, fruta.fruta)
+
     display.update()
 
 quit()

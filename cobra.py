@@ -12,9 +12,9 @@ class Cobra():
 
 class Fruta():
     def __init__(self):
-        x = 300
-        y = 300
-        self.fruta = [x , y]
-        self.skin = Surface((10,10))
-        self.skin.fill((40, 250, 55))
+        self.fruta = [100 , 100]
+        self.fskin = Surface((10,10))
+        self.fskin.fill((250,0,0))
         self.fruta_spaw = True
+
+class Placar():
